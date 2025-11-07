@@ -4,6 +4,9 @@ services:
     env: static
     buildCommand: cd frontend && rm -rf node_modules package-lock.json && npm install && npm run build
     staticPublishDir: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://faktulitebackend.onrender.com
     routes:
       - type: redirect
         source: /*
