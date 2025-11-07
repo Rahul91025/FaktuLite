@@ -215,9 +215,9 @@ This application is configured for deployment on Render as a single Web Service 
 2. **Configure the Web Service:**
    - **Name:** Choose a name for your service
    - **Runtime:** Node
-   - **Build Command:** `yarn`
-   - **Start Command:** `npm start`
-   - **Root Directory:** `backend` (Important: This must be set to 'backend', not 'src' or empty)
+   - **Build Command:** `cd frontend && yarn install && yarn build`
+   - **Start Command:** `cd backend && npm start`
+   - **Root Directory:** Leave empty (project root)
 
 3. **Set Environment Variables:**
    In the Render dashboard, add the following environment variables:
