@@ -93,7 +93,7 @@ Before running this application, make sure you have the following installed:
 
 ## Deployment on Render
 
-This application is configured for deployment on Render as a full-stack web service.
+This application is configured for deployment on Render as separate services: a Web Service for the backend and a Static Site for the frontend.
 
 ### Prerequisites
 - Render account
@@ -205,37 +205,48 @@ This application is configured for deployment on Render as a single Web Service 
 - Render account
 - Supabase project set up with required tables
 
-### Deployment Steps
+### Backend Deployment (Web Service)
 
-1. **Connect your repository to Render:**
-   - Go to your Render dashboard and click "New +"
-   - Select "Web Service"
-   - Connect your GitHub/GitLab repository
-
-2. **Configure the Web Service:**
-   - **Name:** Choose a name for your service
+1. **Create Backend Web Service:**
+   - Go to Render dashboard → "New +" → "Web Service"
+   - Connect your GitHub repository
+   - **Name:** faktulite-backend (or your preferred name)
    - **Runtime:** Node
    - **Build Command:** `cd frontend && yarn install && yarn build`
    - **Start Command:** `cd backend && npm start`
    - **Root Directory:** Leave empty (project root)
 
-3. **Set Environment Variables:**
-   In the Render dashboard, add the following environment variables:
+2. **Set Environment Variables for Backend:**
    - `SUPABASE_URL` - Your Supabase project URL
    - `SUPABASE_ANON_KEY` - Your Supabase anonymous key
    - `JWT_SECRET` - A secure random string for JWT signing
    - `NODE_ENV` - Set to `production`
 
-4. **Deploy:**
+3. **Deploy Backend:**
    - Click "Create Web Service"
-   - Render will build and deploy your application
-   - The frontend will be accessible at your Render service URL
-   - API endpoints will be available at `https://your-service-url.onrender.com/api/*`
+   - Note the backend URL (e.g., https://faktulite-backend.onrender.com)
+
+### Frontend Deployment (Static Site)
+
+1. **Create Frontend Static Site:**
+   - Go to Render dashboard → "New +" → "Static Site"
+   - Connect your GitHub repository
+   - **Name:** faktulite-frontend (or your preferred name)
+   - **Build Command:** `cd frontend && yarn install && yarn build`
+   - **Publish Directory:** `frontend/dist`
+
+2. **Deploy Frontend:**
+   - Click "Create Static Site"
+   - The frontend will be accessible at your static site URL
+
+### Alternative: Single Web Service (Backend serves Frontend)
+
+If you prefer a single service, use the Web Service configuration above. The backend will serve the built frontend files.
 
 ### Notes
-- The backend automatically builds the frontend during deployment
-- All routes not starting with `/api/` will serve the React app
-- Ensure your Supabase project allows requests from your Render domain
+- Update your frontend API calls to use the backend service URL
+- Ensure your Supabase project allows requests from your Render domains
+- The frontend build process creates the `dist` folder with static files
 
 ## Contributing
 
