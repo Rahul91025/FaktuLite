@@ -10,7 +10,7 @@ const Navbar = ({ language = "sv", setLanguage = () => {} }) => {
     const fetchTexts = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/texts?page=navbar&language=${language}`
+          `https://faktulitebackend.onrender.com/api/texts?page=navbar&language=${language}`
         );
         const data = await res.json();
         const textMap = {};

@@ -10,7 +10,7 @@ const Terms = ({ language, setLanguage }) => {
   useEffect(() => {
     const fetchTexts = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/texts?page=terms&language=${language}`);
+        const res = await axios.get(`https://faktulitebackend.onrender.com/api/texts?page=terms&language=${language}`);
         const textMap = {};
         res.data.forEach(item => {
           textMap[item.key] = item.value;
