@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = ({ language = "sv", setLanguage = () => {} }) => {
@@ -38,29 +39,29 @@ const Navbar = ({ language = "sv", setLanguage = () => {} }) => {
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
         {/* Logo */}
-        <a href="/" className="nav-logo">
+        <Link to="/" className="nav-logo">
           <span className="logo-number">123</span>
           <span className="logo-text">Fakturera</span>
-        </a>
+        </Link>
 
         {/* Desktop Nav Links */}
         <div className="nav-links">
-          <a href="/" className="nav-link">
+          <Link to="/" className="nav-link">
             <span>{texts.home || "Home"}</span>
             <div className="link-underline"></div>
-          </a>
-          <a href="/terms" className="nav-link">
+          </Link>
+          <Link to="/terms" className="nav-link">
             <span>{texts.terms || "Terms"}</span>
             <div className="link-underline"></div>
-          </a>
-          <a href="/about" className="nav-link">
+          </Link>
+          <Link to="/about" className="nav-link">
             <span>{texts.about || "About"}</span>
             <div className="link-underline"></div>
-          </a>
-          <a href="/contact" className="nav-link">
+          </Link>
+          <Link to="/contact" className="nav-link">
             <span>{texts.contact || "Contact"}</span>
             <div className="link-underline"></div>
-          </a>
+          </Link>
         </div>
 
         {/* Language Switcher */}
@@ -109,9 +110,9 @@ const Navbar = ({ language = "sv", setLanguage = () => {} }) => {
       <div className={`mobile-menu ${isOpen ? "open" : ""}`}>
         <div className="mobile-menu-content">
           {["Home", "Terms", "About", "Contact"].map((label) => (
-            <a
+            <Link
               key={label}
-              href={`/${label.toLowerCase()}`}
+              to={`/${label.toLowerCase()}`}
               onClick={toggleMenu}
               className="mobile-link"
             >
@@ -131,7 +132,7 @@ const Navbar = ({ language = "sv", setLanguage = () => {} }) => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
