@@ -215,7 +215,7 @@ This application is configured for deployment on Render as a single Web Service 
 2. **Configure the Web Service:**
    - **Name:** Choose a name for your service
    - **Runtime:** Node
-   - **Build Command:** `npm run build`
+   - **Build Command:** `yarn`
    - **Start Command:** `npm start`
    - **Root Directory:** `backend` (Important: This must be set to 'backend', not 'src' or empty)
 
