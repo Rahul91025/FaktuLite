@@ -18,7 +18,7 @@ const Pricelist = ({ language = 'sv', setLanguage = () => {} }) => {
         return;
       }
       try {
-        const res = await fetch('http://localhost:5000/api/pricelist', {
+        const res = await fetch('https://faktulite.onrender.com/api/pricelist', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (res.ok) {
@@ -39,7 +39,7 @@ const Pricelist = ({ language = 'sv', setLanguage = () => {} }) => {
   useEffect(() => {
     const fetchTexts = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/texts?page=pricelist&language=${language}`);
+        const res = await fetch(`https://faktulite.onrender.com/api/texts?page=pricelist&language=${language}`);
         const data = await res.json();
         const textMap = {};
         data.forEach(item => {
@@ -67,7 +67,7 @@ const Pricelist = ({ language = 'sv', setLanguage = () => {} }) => {
     }
     try {
       const updates = editing[id] || {};
-      await fetch(`http://localhost:5000/api/pricelist/${id}`, {
+      await fetch(`https://faktulite.onrender.com/api/pricelist/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

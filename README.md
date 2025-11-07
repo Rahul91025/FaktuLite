@@ -91,6 +91,41 @@ Before running this application, make sure you have the following installed:
    npm run build
    ```
 
+## Deployment on Render
+
+This application is configured for deployment on Render as a full-stack web service.
+
+### Prerequisites
+- Render account
+- Supabase project set up
+
+### Deployment Steps
+
+1. **Connect your repository to Render:**
+   - Go to your Render dashboard and create a new Web Service
+   - Connect your GitHub repository
+
+2. **Configure the service:**
+   - **Runtime:** Node.js
+   - **Build Command:** `npm run build` (this will build the frontend)
+   - **Start Command:** `npm start`
+   - **Root Directory:** `backend`
+
+3. **Set environment variables in Render:**
+   - `SUPABASE_URL`: Your Supabase project URL
+   - `SUPABASE_ANON_KEY`: Your Supabase anonymous key
+   - `JWT_SECRET`: A secure JWT secret key
+   - `PORT`: Will be set automatically by Render
+
+4. **Deploy:**
+   - Render will automatically build and deploy your application
+   - The backend will serve the built frontend static files
+
+### Notes
+- The backend serves the frontend from the `../frontend/dist` directory
+- All API routes are prefixed with `/api`
+- SPA routing is handled by serving `index.html` for non-API routes
+
 ## API Endpoints
 
 ### Authentication
@@ -182,7 +217,7 @@ This application is configured for deployment on Render as a single Web Service 
    - **Runtime:** Node
    - **Build Command:** `npm run build`
    - **Start Command:** `npm start`
-   - **Root Directory:** `backend`
+   - **Root Directory:** `backend` (Important: This must be set to 'backend', not 'src' or empty)
 
 3. **Set Environment Variables:**
    In the Render dashboard, add the following environment variables:
