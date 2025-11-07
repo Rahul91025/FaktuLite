@@ -8,6 +8,6 @@ services:
       - key: VITE_API_URL
         value: https://faktulitebackend.onrender.com
     routes:
-      - type: redirect
+      - type: rewrite
         source: /*
         destination: /index.html
