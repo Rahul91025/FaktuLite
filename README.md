@@ -152,6 +152,7 @@ FaktuLite/
 
 ### Backend Scripts
 - `npm start` - Start the production server
+- `npm run build` - Build the frontend for production
 - `npm run dev` - Start the development server with nodemon
 - `npm test` - Run tests (currently not implemented)
 
@@ -160,6 +161,46 @@ FaktuLite/
 - `npm run build` - Build for production
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview the production build
+
+## Deployment on Render
+
+This application is configured for deployment on Render as a single Web Service that serves both the backend API and the built frontend.
+
+### Prerequisites
+- Render account
+- Supabase project set up with required tables
+
+### Deployment Steps
+
+1. **Connect your repository to Render:**
+   - Go to your Render dashboard and click "New +"
+   - Select "Web Service"
+   - Connect your GitHub/GitLab repository
+
+2. **Configure the Web Service:**
+   - **Name:** Choose a name for your service
+   - **Runtime:** Node
+   - **Build Command:** `npm run build`
+   - **Start Command:** `npm start`
+   - **Root Directory:** `backend`
+
+3. **Set Environment Variables:**
+   In the Render dashboard, add the following environment variables:
+   - `SUPABASE_URL` - Your Supabase project URL
+   - `SUPABASE_ANON_KEY` - Your Supabase anonymous key
+   - `JWT_SECRET` - A secure random string for JWT signing
+   - `NODE_ENV` - Set to `production`
+
+4. **Deploy:**
+   - Click "Create Web Service"
+   - Render will build and deploy your application
+   - The frontend will be accessible at your Render service URL
+   - API endpoints will be available at `https://your-service-url.onrender.com/api/*`
+
+### Notes
+- The backend automatically builds the frontend during deployment
+- All routes not starting with `/api/` will serve the React app
+- Ensure your Supabase project allows requests from your Render domain
 
 ## Contributing
 

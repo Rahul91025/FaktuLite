@@ -164,19 +164,195 @@ body {
   border-color: #1fab3e;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+/* ===== RESPONSIVE DESIGN ===== */
+/* Mobile First - Base styles are optimized for mobile */
+
+/* Small Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .terms-container {
+    padding: 15px;
+  }
+
   .terms-card {
-    padding: 1.8rem;
+    padding: 1.5rem 1rem;
+    margin-top: 5rem;
+    max-width: 100%;
+    width: 95%;
+    border-radius: 20px;
   }
+
   .terms-header h1 {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
   }
+
+  .terms-scroll {
+    max-height: 40vh;
+  }
+
+  .terms-scroll p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
   .home-button {
     width: 100%;
+    padding: 10px 24px;
+    font-size: 14px;
   }
+
   .terms-footer {
     flex-direction: column;
     align-items: center;
+    gap: 15px;
+  }
+
+  .flags {
+    gap: 10px;
+  }
+
+  .flags img {
+    width: 32px;
+    height: 20px;
+  }
+}
+
+/* Tablet (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .terms-container {
+    padding: 20px;
+  }
+
+  .terms-card {
+    padding: 2rem 2rem;
+    margin-top: 6rem;
+    max-width: 700px;
+  }
+
+  .terms-header h1 {
+    font-size: 2rem;
+  }
+
+  .terms-scroll {
+    max-height: 45vh;
+  }
+
+  .terms-scroll p {
+    font-size: 15px;
+  }
+
+  .home-button {
+    width: 100%;
+    padding: 12px 28px;
+  }
+
+  .terms-footer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Small Desktop (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .terms-card {
+    padding: 2.5rem 2.5rem;
+    margin-top: 7rem;
+    max-width: 800px;
+  }
+
+  .terms-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .terms-scroll {
+    max-height: 50vh;
+  }
+
+  .terms-scroll p {
+    font-size: 16px;
+  }
+
+  .home-button {
+    width: auto;
+    padding: 12px 32px;
+  }
+
+  .terms-footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Large Desktop (1025px and up) */
+@media (min-width: 1025px) {
+  .terms-card {
+    padding: 3rem 3rem;
+    margin-top: 8rem;
+    max-width: 900px;
+  }
+
+  .terms-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .terms-scroll {
+    max-height: 55vh;
+  }
+
+  .terms-footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Extra Large Screens (1440px and up) */
+@media (min-width: 1440px) {
+  .terms-card {
+    max-width: 1000px;
+    padding: 3.5rem 3.5rem;
+  }
+
+  .terms-header h1 {
+    font-size: 2.6rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .home-button {
+    min-height: 48px;
+    padding: 14px 32px;
+  }
+
+  .flags img:hover {
+    transform: none;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .terms-container {
+    padding: 10px;
+  }
+
+  .terms-card {
+    padding: 1rem;
+    margin-top: 4rem;
+  }
+
+  .terms-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .terms-scroll {
+    max-height: 30vh;
+  }
+
+  .terms-scroll p {
+    font-size: 13px;
+  }
+
+  .home-button {
+    padding: 8px 20px;
+    font-size: 13px;
   }
 }
