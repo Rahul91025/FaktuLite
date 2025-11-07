@@ -93,6 +93,36 @@ Before running this application, make sure you have the following installed:
 
 ## Deployment on Render
 
+This application is configured for deployment on Render as a full-stack application. The backend serves both the API and the built frontend static files.
+
+### Backend Deployment (Web Service)
+
+1. **Create a new Web Service** on Render connected to your GitHub repository
+2. **Build Command:** `npm install`
+3. **Start Command:** `npm start`
+4. **Environment Variables:**
+   - `SUPABASE_URL`: Your Supabase project URL
+   - `SUPABASE_ANON_KEY`: Your Supabase anonymous key
+   - `JWT_SECRET`: A secure JWT secret key
+   - `PORT`: (Optional, defaults to 10000 on Render)
+
+The backend will automatically build the frontend during deployment and serve it.
+
+### Frontend Configuration
+
+The frontend is configured with:
+- SPA routing support via `_redirects` file
+- React Router for client-side navigation
+- Production API calls pointing to the deployed backend
+
+### Important Notes
+
+- The frontend `.env` file is gitignored to prevent exposing sensitive data
+- All API calls in the frontend are configured to use the production backend URL
+- The application supports direct navigation to routes like `/login`, `/about`, etc.
+
+## Deployment on Render
+
 This application is configured for deployment on Render as separate services: a Web Service for the backend and a Static Site for the frontend.
 
 ### Prerequisites
