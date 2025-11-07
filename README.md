@@ -235,48 +235,32 @@ This application is configured for deployment on Render as a single Web Service 
 - Render account
 - Supabase project set up with required tables
 
-### Backend Deployment (Web Service)
+### Single Web Service Deployment
 
-1. **Create Backend Web Service:**
+1. **Create Web Service:**
    - Go to Render dashboard → "New +" → "Web Service"
    - Connect your GitHub repository
-   - **Name:** faktulite-backend (or your preferred name)
+   - **Name:** faktulite (or your preferred name)
    - **Runtime:** Node
-   - **Build Command:** `cd frontend && yarn install && yarn build`
-   - **Start Command:** `cd backend && npm start`
-   - **Root Directory:** Leave empty (project root)
+   - **Build Command:** `npm run build`
+   - **Start Command:** `npm start`
+   - **Root Directory:** `backend`
 
-2. **Set Environment Variables for Backend:**
+2. **Set Environment Variables:**
    - `SUPABASE_URL` - Your Supabase project URL
    - `SUPABASE_ANON_KEY` - Your Supabase anonymous key
    - `JWT_SECRET` - A secure random string for JWT signing
    - `NODE_ENV` - Set to `production`
 
-3. **Deploy Backend:**
+3. **Deploy:**
    - Click "Create Web Service"
-   - Note the backend URL (e.g., https://faktulite-backend.onrender.com)
-
-### Frontend Deployment (Static Site)
-
-1. **Create Frontend Static Site:**
-   - Go to Render dashboard → "New +" → "Static Site"
-   - Connect your GitHub repository
-   - **Name:** faktulite-frontend (or your preferred name)
-   - **Build Command:** `cd frontend && yarn install && yarn build`
-   - **Publish Directory:** `frontend/dist`
-
-2. **Deploy Frontend:**
-   - Click "Create Static Site"
-   - The frontend will be accessible at your static site URL
-
-### Alternative: Single Web Service (Backend serves Frontend)
-
-If you prefer a single service, use the Web Service configuration above. The backend will serve the built frontend files.
+   - The application will be accessible at your service URL (e.g., https://faktulite.onrender.com)
 
 ### Notes
-- Update your frontend API calls to use the backend service URL
-- Ensure your Supabase project allows requests from your Render domains
-- The frontend build process creates the `dist` folder with static files
+- The backend automatically builds the frontend during deployment
+- All API calls use relative paths, so they work with the deployed backend
+- Ensure your Supabase project allows requests from your Render domain
+- The build process creates the `dist` folder with static files that are served by the backend
 
 ## Contributing
 

@@ -10,7 +10,7 @@ const Home = ({ language = "sv", setLanguage = () => {} }) => {
   useEffect(() => {
     const fetchTexts = async () => {
       try {
-        const res = await fetch(`https://faktulitebackend.onrender.com/api/texts?page=home&language=${language}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/texts?page=home&language=${language}`);
         const data = await res.json();
         const textMap = {};
         data.forEach(item => {
