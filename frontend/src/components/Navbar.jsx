@@ -11,7 +11,7 @@ const Navbar = ({ language = "sv", setLanguage = () => {} }) => {
     const fetchTexts = async () => {
       try {
         const res = await fetch(
-          `https://faktulitebackend.onrender.com/api/texts?page=navbar&language=${language}`
+          `${import.meta.env.VITE_API_URL}/api/texts?page=navbar&language=${language}`
         );
         const data = await res.json();
         const textMap = {};
